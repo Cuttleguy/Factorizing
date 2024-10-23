@@ -10,11 +10,11 @@ public class Main {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("To Factorize: ");
-        int input=Integer.parseInt(br.readLine());
-        Map<Integer,Integer> factorizingResult = new HashMap<>();
-        List<Integer> primes = PrimeNumberGenerator.generatePrimeNumbers(input);
+        long input=Long.parseLong(br.readLine());
+        Map<Long,Integer> factorizingResult = new HashMap<>();
+        List<Long> primes = PrimeNumberGenerator.generatePrimeNumbers(Double.valueOf(Math.sqrt(input)).longValue());
         while(input!=1){
-            for(Integer prime:primes)
+            for(Long prime:primes)
             {
                 if(input%prime==0)
                 {
@@ -27,15 +27,15 @@ public class Main {
 //        System.out.println(Arrays.toString(factorizingResult.values().stream().mapToInt(i -> i+1).toArray()));
         NestedLoop thisLoop = new NestedLoop(factorizingResult.values().stream().mapToInt(i -> i+1).toArray());
         List<int[]> loops=thisLoop.indiciesList;
-        List<Integer> factors=new ArrayList<>();
-        List<Integer> keySet=new ArrayList<>();
-        for(int i : factorizingResult.keySet())
+        List<Long> factors=new ArrayList<>();
+        List<Long> keySet=new ArrayList<>();
+        for(Long i : factorizingResult.keySet())
         {
             keySet.add(i);
         }
         for(int[] loop : loops)
         {
-            int factor = 1;
+            long factor = 1;
 
             for (int i = 0; i < loop.length; i++) {
                 int index = loop[i];
